@@ -1,0 +1,10 @@
+*.tfvars
+.DS_Store
+.tmp
+*.terraform
+*.tfplan
+*.tfstate
+*.tfstate.backup
+.terraform
+*.hcl
+tf_sa_key

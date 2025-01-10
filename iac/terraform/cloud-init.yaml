@@ -1,0 +1,13 @@
+#cloud-config
+
+package_update: true
+package_reboot_if_required: true
+packages:
+  - [tzdata, curl, jq, python3, py3-pip, nano, bash, fish, htop]
+  - [docker, docker-cli-compose nginx]
+
+runcmd:
+  - ln -s /usr/share/zoneinfo/Africa/Nairobi /etc/localtime
+  - usermod -s $(which fish) root
+  - for svc in nginx docker; do rc-update add $svc default && service $svc start; done
+  - rm -fr /var/cache/apk/*
